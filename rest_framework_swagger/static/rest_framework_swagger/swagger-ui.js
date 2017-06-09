@@ -1180,6 +1180,7 @@ var ApiKeyAuthorization = module.exports.ApiKeyAuthorization = function (name, v
 };
 
 ApiKeyAuthorization.prototype.apply = function (obj) {
+  console.log(obj);
   if (this.type === 'query') {
     // see if already applied.  If so, don't do it again
 
@@ -1209,6 +1210,7 @@ ApiKeyAuthorization.prototype.apply = function (obj) {
     return true;
   } else if (this.type === 'header') {
     if(typeof obj.headers[this.name] === 'undefined') {
+      console.log(obj);
       obj.headers[this.name] = "Token " + this.value;
     }
 
